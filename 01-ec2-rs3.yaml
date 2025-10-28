@@ -67,31 +67,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# before you execute this script, for authentication configure aws 
-#  steps
+# before you execute this script, need to authentication configure aws 
+#  step-1
 # 1) aws configure
 # 2) Aws Access Key ID:  provide aws keyswhich you generate from user 
 # 3) secret access key: provide secret key which you generate from user
-# 4) 
+# 4) Default region name [None]: us-east-1
+# 5)Default output format [None]: just press enter
+#---------------------------------------------------------------------------
+# install libraries and dependencies =>  pip3.9  install botocore boto3  
