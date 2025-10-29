@@ -1,0 +1,49 @@
+- name: setup catalogue server
+  hosts: catalogue
+  enabled: yes
+  tasks:
+  - name: disable default node js module
+    ansible.builtin.command: dnf module disable nodejs -y
+
+  - name: enable module nodejs:20
+    ansible.builtin.command: dnf module enable nodejs:20 -y
+
+  - name: Install nodejs
+    ansible.builtin.package:
+      name: nodejs
+      state: present
+  
+  - name: create roboshop system user
+    ansible.builtin.user:
+      name: roboshop
+      comment: Roboshop system user
+      system: true
+      shell: /sbin/nologin
+      home: /app
+
+  - name: create app directory
+    ansible.builtin.directory:
+      state: directory
+      path: /app
+
+  - name: download the cataloge application
+    ansible.builtin.get_url: 
+      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+      dest: /tmp/catalogue.zip
+
+  - name: extract catalogue application
+    ansible.builtin.unarchive:
+      src: /tmp/catalogue.zip
+      dest: /app
+      remote_scr: yes          # unarchive a file that is alrady in remote server
+
+
+
+
+
+
+
+# ansible create user module =>  ansible.builtin.user
+# ansible create directory => ansible.builtin.directory
+# ansible download file =>  ansible.builtin.get_url
+# ansible unzip file => ansible.builtin.unarchive
