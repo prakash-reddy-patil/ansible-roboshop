@@ -35,7 +35,7 @@
     ansible.builtin.unarchive:
       src: /tmp/catalogue.zip
       dest: /app
-      remote_scr: yes          # unarchive a file that is alrady in remote server
+      remote_src: yes          # unarchive a file that is alrady in remote server
 
 
 
