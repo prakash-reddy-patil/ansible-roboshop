@@ -1,6 +1,6 @@
 - name: setup catalogue server
   hosts: catalogue
-  enabled: yes
+  become: yes
   tasks:
   - name: disable default node js module
     ansible.builtin.command: dnf module disable nodejs -y
