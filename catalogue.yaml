@@ -22,7 +22,7 @@
       home: /app
 
   - name: create app directory
-    ansible.builtin.directory:
+    ansible.builtin.file:
       state: directory
       path: /app
 
@@ -44,6 +44,6 @@
 
 
 # ansible create user module =>  ansible.builtin.user
-# ansible create directory => ansible.builtin.directory
+# ansible create directory => ansible.builtin.file
 # ansible download file =>  ansible.builtin.get_url
 # ansible unzip file => ansible.builtin.unarchive
