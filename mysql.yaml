@@ -1,5 +1,5 @@
 - name: setup mysql debug
-  hosts: local
+  hosts: mysql
   become: yes
   tasks:
   - name: install mysql server
