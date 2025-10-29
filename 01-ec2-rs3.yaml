@@ -75,4 +75,6 @@
 # 4) Default region name [None]: us-east-1
 # 5)Default output format [None]: just press enter
 #---------------------------------------------------------------------------
-# install libraries and dependencies =>  pip3.9  install botocore boto3  
+# install libraries and dependencies =>  pip3.9  install botocore boto3 
+
+# to pass arguments for creating instance => ansible-playbook -i inventory.ini   01-ec2-rs3.yaml -e "instances=['catalogue.yaml','user','cart']"
