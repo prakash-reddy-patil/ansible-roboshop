@@ -7,19 +7,19 @@
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
 
-  - name: Install mongodb server
+  - name: Install mongodb
     ansible.builtin.package:
       name: mongodb-org
       state: present
 
-  - name: allow remote connections
+  - name: Explicitly specifying named matched groups
     ansible.builtin.replace:
       path: /etc/mongod.conf
       regexp: '127.0.0.1' 
-      replace: 0.0.0.0
+      replace: '0.0.0.0'
 
   - name: start and enable service mongodb
     ansible.builtin.service:
-      name: mongod
+      name: mongodb
       state: started   # enabled: yes → The service will start automatically after reboot
       enabled: yes
