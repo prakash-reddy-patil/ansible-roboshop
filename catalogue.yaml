@@ -59,7 +59,7 @@
 
   
   - name: connnect to mongodb catalogue
-    ansible.builtin.command: mongosh mongodb.divyavutakanti.shop --quiet --eval "db.getMongo().getDBNames().indexof('catalogue')"
+    ansible.builtin.command: mongosh mongodb.divyavutakanti.shop --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output
 
   # - name: evaluate cataalogue database
