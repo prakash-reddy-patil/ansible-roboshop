@@ -1,0 +1,67 @@
+- name: configure shipping server
+  hosts: shipping
+  become: yes
+  tasks:
+    - name: install maveen
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+        loop:
+        - maven
+        - mysql
+
+    - name: create roboshop system user
+      ansible.builtin.user:
+        name: roboshop
+        comment: roboshop system user    # description
+        system: true        
+        shell: /sbin/nologin  
+        home: /app
+
+    - name: remove app directory
+      ansible.builtin.file:
+        state: absent
+        path: /app
+
+    - name: create app directory
+      ansible.builtin.file:
+        state: directory
+        path: /app
+
+    - name: delete shipping file
+      ansible.builtin.file:
+        path: /tmp/shipping.zip
+        state: absent
+
+    - name: download shipping application
+      ansible.builtin.get_url: 
+        url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip
+        dest: /tmp/shipping.zip
+    
+    - name: extract shipping application
+      ansible.builtin.unarchive:
+        src: /tmp/shipping.zip
+        dest: /app
+        remote_scr: yes
+         
+    - name: install dependencies
+      ansible.builtin.command: mvn clean package
+      args:            # args: → extra options for the task  #chdir: → change directory before running the command
+        chdir: /app    # args: chdir: /app means “Go to the /app folder first, then run the task.”
+ 
+    - name: move jar file
+      ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+      args:
+        chdir: /app
+
+    - name: copy shipping service
+      ansible.builtin.copy:
+        src: shipping.service
+        dest: /etc/systemd/system/shipping.service
+        
+
+
+
+
+# system: true This means it creates a system user, not a normal login user. System users are for running services or apps, not for people.
+# ansible.builtin.get_url : It’s used when you want Ansible to fetch a file from the internet or another location and save it on the target machine.
