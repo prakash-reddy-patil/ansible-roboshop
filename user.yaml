@@ -1,0 +1,82 @@
+- name: setup user server
+  host: user
+  become: yes
+  tasks:
+    - name: disable default nodejs
+      ansible.builtin.command: dnf module disable nodejs -yes
+
+    - name: enable default nodejs
+      ansible.builtin.command: dnf module enable nodejs -yes
+    
+    - name: install nodejs 
+      ansible.builtin.package:
+        name: nodejs
+        state: started
+    
+    - name: create roboshop system user
+      ansible.builtin.user:
+        name: roboshop
+        comment: roboshop system user
+        system: yes   #system: yes means the user is a system account, not a normal login user
+        shell: /sbin/nologin
+        home: /app
+
+  # Safe to remove directory, because 2nd time if we run it will download freshly. no error if does not exist
+    - name: remove app directory
+      ansible.builtin.file:
+        path: /app
+        state: absent 
+
+    - name: create app directory
+      ansible.builtin.file:
+        state: directory
+        path: /app
+
+    - name: Delete user file
+      ansible.builtin.file:
+        path: /tmp/user.zip
+        state: absent 
+    
+    - name: download the user application
+      ansible.builtin.get_url:
+        url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
+        dest: /tmp/user.zip
+
+    - name: extract user application
+      ansible.builtin.unarchieve:
+        src: /tmp/user.zip
+        dest: /app
+        remote_scr: yes
+
+    - name: install dependencies
+      comunity.general.npm:
+        path: /app
+    
+    - name: copy user service
+      ansible.builtin.copy:
+        scr: user.service
+        dest: /etc/systemd/system/user.service
+
+    - name: daemon reload enable and start
+      ansible.builtin.systemd_service:
+        name: user
+        enabled: true
+        state: started
+        daemon_reload: true
+     
+        
+
+
+
+
+
+
+
+
+
+
+
+
+# remote_src: yes means the source file is already on the remote server, not on your local computer
+# Ansible will not copy the file from your system — it will use the file that already exists on the target machine
+# daemon_reload: yes means reload the system services(systemd) list after making changes — for example, if you add or update a service file
