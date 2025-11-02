@@ -49,12 +49,12 @@
         remote_src: yes
 
     - name: install dependencies
-      comunity.general.npm:
+      community.general.npm:
         path: /app
     
     - name: copy user service
       ansible.builtin.copy:
-        scr: user.service
+        src: user.service
         dest: /etc/systemd/system/user.service
 
     - name: daemon reload enable and start
