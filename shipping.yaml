@@ -4,9 +4,9 @@
   tasks:
     - name: install maveen and sql
       ansible.builtin.dnf:
-        state: present
         name: "{{ item }}"
-        loop:
+        state: present
+      loop:
         - maven
         - mysql
 
