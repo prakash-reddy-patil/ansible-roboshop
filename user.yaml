@@ -43,7 +43,7 @@
         dest: /tmp/user.zip
 
     - name: extract user application
-      ansible.builtin.unarchieve:
+      ansible.builtin.unarchive::
         src: /tmp/user.zip
         dest: /app
         remote_scr: yes
