@@ -50,7 +50,7 @@
       ansible.builtin.unarchive:
         src: /tmp/shipping.zip
         dest: /app
-        remote_scr: yes
+        remote_src: yes
          
     - name: install dependencies
       ansible.builtin.command: mvn clean package
@@ -72,9 +72,9 @@
         state: import
         name: all
         login_host: mysql.divyavutakanti.shop
-        login_user:
-        login_password:
-        target:
+        login_user: root
+        login_password: Roboshop@1
+        target:  "{{ item }}"
       loop:
         - /app/db/schema.sql
         - /app/db/app-user.sql 
