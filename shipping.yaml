@@ -10,6 +10,14 @@
         - maven
         - mysql
 
+    - name: instal my sql phyton librsries
+      ansible.builtin.pip:
+        excutable: pip3.9
+        name:  "{{ item }}"
+      loop:
+        - cryptography
+        - PyMySQL
+
     - name: create roboshop system user
       ansible.builtin.user:
         name: roboshop
@@ -58,6 +66,27 @@
       ansible.builtin.copy:
         src: shipping.service
         dest: /etc/systemd/system/shipping.service
+
+    - name: import shipping data into mysql
+      community.mysql.mysql_db:
+        state: import
+        name: all
+        login_host: mysql.divyavutakanti.shop
+        login_user:
+        login_password:
+        target:
+      loop:
+        - /app/db/schema.sql
+        - /app/db/app-user.sql 
+        - /app/db/master-data.sql
+
+    - name: daemon reload enable and start
+      ansible.builtin.systemd_service:
+        name: shipping
+        enabled: true
+        state: started
+        daemon_reload: true
+
         
 
 
@@ -65,3 +94,5 @@
 
 # system: true This means it creates a system user, not a normal login user. System users are for running services or apps, not for people.
 # ansible.builtin.get_url : It’s used when you want Ansible to fetch a file from the internet or another location and save it on the target machine.
+# community.mysql.mysql_db in Ansible is used to create, delete, or manage MySQL databases.
+# ansible.builtin.systemd_service in Ansible is used to start, stop, restart, enable, or disable a service on a Linux system that uses systemd.
