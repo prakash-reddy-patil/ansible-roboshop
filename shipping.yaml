@@ -7,7 +7,7 @@
         name: "{{ item }}"
         state: present
         loop:
-        - maveen
+        - maven
         - mysql
 
     - name: instal my sql phyton librsries
