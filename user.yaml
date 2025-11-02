@@ -1,5 +1,5 @@
 - name: setup user server
-  host: user
+  hosts: user
   become: yes
   tasks:
     - name: disable default nodejs
