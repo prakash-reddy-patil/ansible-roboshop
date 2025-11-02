@@ -87,7 +87,7 @@
     ansible.builtin.shell: mongosh --host mongodb.divyavutakanti.shop </app/db/master-data.js
     when: catalogue_output.stdout | int < 0
 
-  # - name: start and enable cataalogue
+  # - name: start and enable catalogue
   #   ansible.builtin.service:
   #     name: catalogue
   #     enabled: yes
