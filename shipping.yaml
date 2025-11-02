@@ -3,7 +3,7 @@
   become: yes
   tasks:
     - name: install maveen
-      ansible.builtin.package:
+      ansible.builtin.dnf:
         name: "{{ item }}"
         state: present
         loop:
