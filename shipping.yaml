@@ -10,7 +10,7 @@
         - maven
         - mysql
 
-    - name: instal my sql phyton librsries
+    - name: install my sql python libraries
       ansible.builtin.pip:
         excutable: pip3.9
         name:  "{{ item }}"
