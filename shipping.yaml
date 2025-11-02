@@ -12,7 +12,7 @@
 
     - name: install my sql python libraries
       ansible.builtin.pip:
-        excutable: pip3.9
+        executable: pip3.9
         name:  "{{ item }}"
       loop:
         - cryptography
