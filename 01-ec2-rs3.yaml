@@ -8,7 +8,7 @@
     zone_id: "Z04186342ATITR80K0PR0"    # replace with your ID
     domain_name: "divyavutakanti.shop"
     # we can pass instances through command line using -e
-    #instances: 
+    instances: 
       #- mongodb
       # - redis
       # - mysql
