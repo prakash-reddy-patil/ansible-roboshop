@@ -46,7 +46,7 @@
       ansible.builtin.unarchive::
         src: /tmp/user.zip
         dest: /app
-        remote_scr: yes
+        remote_src: yes
 
     - name: install dependencies
       comunity.general.npm:
