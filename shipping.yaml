@@ -88,9 +88,6 @@
 
         
 
-
-
-
 # system: true This means it creates a system user, not a normal login user. System users are for running services or apps, not for people.
 # ansible.builtin.get_url : It’s used when you want Ansible to fetch a file from the internet or another location and save it on the target machine.
 # community.mysql.mysql_db in Ansible is used to create, delete, or manage MySQL databases.

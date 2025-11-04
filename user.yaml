@@ -64,18 +64,6 @@
         state: started
         daemon_reload: true
      
-        
-
-
-
-
-
-
-
-
-
-
-
 
 # remote_src: yes means the source file is already on the remote server, not on your local computer
 # Ansible will not copy the file from your system — it will use the file that already exists on the target machine
