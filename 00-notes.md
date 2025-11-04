@@ -17,11 +17,18 @@ When you create a role (for example, nginx), Ansible expects this kind of struct
 
 Explanation of Each Folder (in simple English)
 Folder	Purpose (Simple Meaning)
+
 tasks/	Contains the main list of actions (like install, configure, start service).
+
 handlers/	Used for restarting or reloading services (triggered by “notify”).
+
 files/	Keeps normal files that you copy to the target system.
+
 templates/	Stores .j2 Jinja2 template files (like nginx.conf.j2).
+
 vars/	Contains variables specific to this role.
+
 defaults/	Holds default variable values (lowest priority).
+
 meta/	Defines role dependencies or metadata.
 
