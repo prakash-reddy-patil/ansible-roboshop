@@ -4,10 +4,10 @@ Instead of keeping all the tasks in one long playbook, roles help divide them ba
 For example, if I’m setting up a web server, I can create an nginx role that contains all the tasks, handlers, templates, and variables related to nginx.
 
 Roles follow a standard folder structure — we usually have folders like tasks, handlers, files, templates, vars, and defaults.
+Each folder has a specific purpose — for example, tasks contain the main automation steps, handlers handle service restarts, templates store configuration templates, and vars hold variable data.
 
 The main advantage is that roles make playbooks cleaner, easier to maintain, and reusable across different projects or environments.
 
-So, in short — roles bring structure and reusability to Ansible automation.
 
 Ansible Role Folder Structure (Standard Layout)
 When you create a role (for example, nginx), Ansible expects this kind of structure:
@@ -24,8 +24,3 @@ vars/	Contains variables specific to this role.
 defaults/	Holds default variable values (lowest priority).
 meta/	Defines role dependencies or metadata.
 
-How to Say in an Interview
-
-“Roles follow a standard folder structure in Ansible.
-Each folder has a specific purpose — for example, tasks contain the main automation steps, handlers handle service restarts, templates store configuration templates, and vars hold variable data.
-This structure makes roles easy to maintain, reusable, and clear for others to understand.”
