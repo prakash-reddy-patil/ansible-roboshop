@@ -12,19 +12,7 @@ So, in short — roles bring structure and reusability to Ansible automation.
 Ansible Role Folder Structure (Standard Layout)
 When you create a role (for example, nginx), Ansible expects this kind of structure:
 
-roles/
-└── nginx/
-    ├── tasks/
-    │   └── main.yml
-    ├── handlers/
-    │   └── main.yml
-    ├── files/
-    ├── templates/
-    ├── vars/
-    │   └── main.yml
-    ├── defaults/
-    │   └── main.yml
-    └── meta/
+![alt text](image.png)
 
 Explanation of Each Folder (in simple English)
 Folder	Purpose (Simple Meaning)
