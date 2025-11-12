@@ -20,9 +20,9 @@ keyed_groups:
 # before executing about playbook, create six ec2-instances with the name frontend manually. 
 # What is dynamic inventory
 # ----------------------------
-# insted of getting ip address statically we can pull the ip address dynamically using aws ansible dynamic inventory plugin.
-# we will provide, all the required parameter in yaml file and insted of static inventory  file we will give this dynamic invertory plugin to ansible playbook it will fetch the ip-addresses and it will execute.
+# instead of getting Ip address statically, we can pull the Ip address dynamically using aws ansible dynamic inventory plugin.
+# we will provide, all the required parameter in yaml file and instead of static inventory file we will give this dynamic inventory plugin to ansible playbook it will fetch the Ip-addresses and it will execute.
 
-# ansible can connect to aws dynamically to fetch the ip address using dynamic inventory plugin(amazon.aws.aws_ec2), this helps in autoscaling kind of environment ,where fetching the IP address statically is not possible.
+# ansible can connect to aws dynamically to fetch the Ip address using dynamic inventory plugin(amazon.aws.aws_ec2), this helps in autoscaling kind of environment, where fetching the IP address statically is not possible.
 
 # plugin: connects to other system and fetch required information
